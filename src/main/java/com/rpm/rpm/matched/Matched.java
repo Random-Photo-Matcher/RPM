@@ -1,4 +1,4 @@
-package com.rpm.rpm.sending;
+package com.rpm.rpm.matched;
 
 import com.rpm.rpm.PhotoInfo;
 import com.rpm.rpm.users.Users;
@@ -7,20 +7,23 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDateTime;
+
 @Getter
 @Entity
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class Sending {
+public class Matched {
+
     @Id @GeneratedValue
-    @Column(name = "sending_id")
     private Long id;
 
-    @ManyToOne
+    private Long matchedId;
+
+    @OneToOne
     @JoinColumn(name="users_id")
     private Users user;
+    private LocalDateTime matchingTime;
 
     @Embedded
     private PhotoInfo photoInfo;
-    @Enumerated(EnumType.STRING)
-    private SendingStatus status; // READY, MATCHED
 }

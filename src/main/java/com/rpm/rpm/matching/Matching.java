@@ -18,5 +18,5 @@ public class Matching {
     private Sending sendingId1;
     @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Sending sendingId2;
-    private LocalDateTime sendingTime;
+    private LocalDateTime matchingTime;
 }
