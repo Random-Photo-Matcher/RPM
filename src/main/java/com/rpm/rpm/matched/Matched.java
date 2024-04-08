@@ -19,7 +19,7 @@ public class Matched {
 
     private Long matchedId;
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name="users_id")
     private Users user;
     private LocalDateTime matchingTime;

@@ -15,7 +15,7 @@ public class Sending {
     @Column(name = "sending_id")
     private Long id;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name="users_id")
     private Users user;
 
