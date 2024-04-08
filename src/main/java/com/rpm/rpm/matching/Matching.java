@@ -5,6 +5,8 @@ import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.CreatedDate;
+
 import java.time.LocalDateTime;
 
 @Getter
@@ -15,8 +17,10 @@ public class Matching {
     @Column(name = "matching_id")
     private Long id;
     @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private Sending sendingId1;
+    private Sending sending1;
     @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private Sending sendingId2;
+    private Sending sending2;
+
+    @CreatedDate
     private LocalDateTime matchingTime;
 }
