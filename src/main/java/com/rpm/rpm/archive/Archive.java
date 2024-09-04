@@ -1,11 +1,13 @@
 package com.rpm.rpm.archive;
 
 import com.rpm.rpm.PhotoInfo;
+import com.rpm.rpm.matching.Matching;
 import com.rpm.rpm.users.Users;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.CreatedDate;
 
 import java.time.LocalDateTime;
 
@@ -18,11 +20,14 @@ public class Archive {
     @Column(name = "archive_id")
     private Long id;
 
-    private Long matchingId;
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private Matching matching;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name="users_id")
     private Users user;
+
+    @CreatedDate
     private LocalDateTime matchingTime;
 
     @Embedded
